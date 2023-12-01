@@ -1,0 +1,22 @@
+name: render-scene
+run-name: ${{ github.actor }} is render scenes
+on:
+  - push
+jobs:
+  render-scenes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rendering Scenes
+        uses: pavelzw/manim_community_renderer@master
+        id: renderer
+        with:
+          source_file: testAnimation.py
+          scene_names: |
+            mandelbrotScene
+          args: "-qh"
+      - name: Save output as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Videos
+          path: ${{ steps.renderer.outputs.video_path }}
