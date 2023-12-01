@@ -116,4 +116,4 @@ class mandelbrotScene(Scene):
         
         self.add(SurroundingRectangle(image,GREEN))
         self.add(image)
-        self.play(self.time.animate(run_time=1,rate_func=smooth).set_value(100))
+        self.play(self.time.animate(run_time=100,rate_func=smooth).set_value(1000))
